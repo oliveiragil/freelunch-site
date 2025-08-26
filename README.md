@@ -1,36 +1,148 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FreeLunch - AI Intelligence Platform Landing Page
 
-## Getting Started
+A modern, responsive landing page built with Next.js 14 for FreeLunch, an upcoming AI intelligence platform. The page features a sleek black and orange design with smooth animations and a waitlist signup functionality.
 
-First, run the development server:
+## 🚀 Features
 
+- **Modern Design**: Clean, professional layout with black and orange color scheme
+- **Responsive**: Fully responsive design that works on all devices
+- **Animations**: Smooth animations powered by Framer Motion
+- **Waitlist Form**: Email validation and signup functionality
+- **SEO Optimized**: Meta tags and Open Graph for social media sharing
+- **Fast Performance**: Built with Next.js 14 and optimized for speed
+- **TypeScript**: Fully typed for better development experience
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 14 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion
+- **Form Handling**: React Hook Form with Zod validation
+- **Icons**: Lucide React
+- **Deployment**: Optimized for Vercel
+
+## 🏃‍♂️ Getting Started
+
+### Prerequisites
+
+- Node.js 18+ (recommended: Node.js 20+)
+- npm, yarn, pnpm, or bun
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd fl-landing-page
+```
+
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
+
+3. Add your logo:
+   - Replace `/public/logo1.png.placeholder` with your actual logo file
+   - Rename it to `logo1.png`
+
+4. Run the development server:
 ```bash
 npm run dev
 # or
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 Deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This project is optimized for deployment on Vercel:
 
-## Learn More
+1. Push your code to a Git repository
+2. Connect your repository to Vercel
+3. Configure the custom domain `freelunch.dev`
+4. Deploy!
 
-To learn more about Next.js, take a look at the following resources:
+### Environment Configuration
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The site is pre-configured to work with the domain `freelunch.dev`. Update the metadata in `src/app/layout.tsx` if you're using a different domain.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📂 Project Structure
 
-## Deploy on Vercel
+```
+src/
+├── app/
+│   ├── layout.tsx          # Root layout with metadata
+│   ├── page.tsx            # Main landing page
+│   └── globals.css         # Global styles
+├── components/             # Reusable components (empty - ready for expansion)
+public/
+├── logo1.png              # Your logo file (replace placeholder)
+└── ...                    # Other static assets
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🎨 Design Features
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Color Scheme**: Black (#000000) and Orange (#FF6B35) primary colors
+- **Typography**: Modern system fonts (Geist Sans)
+- **Animations**: Floating elements, fade-ins, and hover effects
+- **Interactive Elements**: Animated buttons and form states
+- **Visual Effects**: Gradient backgrounds and glowing elements
+
+## 🔧 Customization
+
+### Colors
+Edit `tailwind.config.ts` to modify the color scheme:
+```typescript
+colors: {
+  primary: {
+    orange: "#FF6B35", // Your orange color
+    black: "#000000",  // Your black color
+    gray: "#1a1a1a",   // Your gray color
+  },
+}
+```
+
+### Content
+Update the text content in `src/app/page.tsx`:
+- Hero headline
+- Subtitle description
+- Button text
+- Footer information
+
+### Logo
+Replace `/public/logo1.png.placeholder` with your actual logo file and rename it to `logo1.png`.
+
+## 📈 Performance
+
+- **Lighthouse Score**: Optimized for 100% performance
+- **Core Web Vitals**: Excellent LCP, FID, and CLS scores
+- **SEO**: Comprehensive meta tags and structured data
+- **Accessibility**: WCAG compliant design
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## 📄 License
+
+This project is private and proprietary to FreeLunch.
+
+## 🌐 Live Site
+
+Once deployed, the site will be available at: [https://freelunch.dev](https://freelunch.dev)
+
+---
+
+Built with ❤️ using Next.js and deployed on Vercel.
