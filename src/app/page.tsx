@@ -63,13 +63,6 @@ export default function Home() {
           />
           <span className="text-xl font-bold">FreeLunch</span>
         </div>
-        <motion.button
-          className="px-4 py-2 border border-primary-orange text-primary-orange hover:bg-primary-orange hover:text-black transition-all duration-300 rounded-lg"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          Sign In
-        </motion.button>
       </motion.nav>
 
       {/* Main Content */}
@@ -88,7 +81,7 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             <Sparkles className="w-4 h-4 text-primary-orange" />
-            <span className="text-sm text-gray-300">AI-Powered Intelligence • Coming Soon</span>
+            <span className="text-sm text-gray-300">The only tool your company needs</span>
             <Sparkles className="w-4 h-4 text-primary-orange" />
           </motion.div>
 
