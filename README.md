@@ -127,6 +127,7 @@ Replace `/public/logo1.png.placeholder` with your actual logo file and rename it
 - **SEO**: Comprehensive meta tags and structured data
 - **Accessibility**: WCAG compliant design
 
+
 ## 🤝 Contributing
 
 1. Fork the repository
@@ -140,6 +141,7 @@ Replace `/public/logo1.png.placeholder` with your actual logo file and rename it
 This project is private and proprietary to FreeLunch.
 
 ## 🌐 Live Site
+
 
 Once deployed, the site will be available at: [https://freelunch.dev](https://freelunch.dev)
 
