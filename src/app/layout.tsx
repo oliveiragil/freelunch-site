@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "FreeLunch - AI Intelligence Platform",
     description: "Revolutionize your workflow with cutting-edge AI technology that learns, adapts, and delivers unprecedented results.",
-    images: ["/logo1.png"],
+    images: ["/logo_freelunch.svg"],
   },
 };
 
