@@ -13,6 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://freelunch.dev"),
   title: "FreeLunch - AI Intelligence Platform",
   description: "Revolutionize your workflow with cutting-edge AI technology that learns, adapts, and delivers unprecedented results. Join the waitlist for early access.",
   keywords: "AI, artificial intelligence, productivity, automation, technology",
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
     siteName: "FreeLunch",
     images: [
       {
-        url: "/logo1.png",
+        url: "/logo_freelunch.svg",
         width: 1200,
         height: 630,
       },
