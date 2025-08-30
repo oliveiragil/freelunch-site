@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import Image from 'next/image';
-import { Sparkles, Zap, Brain, ArrowRight, CheckCircle } from 'lucide-react';
+import { Sparkles, CheckCircle } from 'lucide-react';
 
 const emailSchema = z.object({
   email: z.string().email('Please enter a valid email address'),
@@ -55,7 +55,7 @@ export default function Home() {
       >
         <div className="flex items-center space-x-2">
           <Image
-            src="/logo1.svg"
+            src="/logo_freelunch.svg"
             alt="FreeLunch Logo"
             width={40}
             height={40}
@@ -108,10 +108,15 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-            All-in-one, ai-native, open-source backend platform for startups post-MVP. Gives
-            startups Google-level maturity while being cheaper, easier to use and more flexible
-            than the popular combo of VSCode + Heroku/Render/Railway. Give you the
-            PaaS experience of Heroku + intuitive GUI of n8n + AI assistance of Cursor.
+            Everything you need to help your startup reach Google-level maturity in one unified platform.
+            <br /><br />
+            Freelunch is all-in-one open-source backend platform easier to use and more flexible than popular combos of several separated tools to coding, test, build, deploy on some PaaS, Data Analisys, ALM, Project management, etc...
+            <br /><br />
+            The only tool your company needs for DevOps, DataOps, MLOps, LLMOps and any other Ops.
+            <br /><br />
+            Combines the AI-assisted development of Cursor + UX of N8N + Helper APIs of Dapr + K8s Gitops of Github Actions & ArgoCD + MLOps/LLMOps of MLflow & Langfuse + Project Management of Jira.
+            <br /><br />
+            Single platform that makes any programer become a full-stack backend/ML/AI engineer, working end-to-end: from data annotation and data ingestion to working endpoints and observability.
           </motion.p>
 
           {/* Waitlist Form */}
@@ -123,6 +128,19 @@ export default function Home() {
           >
             {!isSubmitted ? (
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                <motion.button
+                  type="submit"
+                  disabled={isLoading}
+                  className="w-full bg-gray-900/50 border border-primary-orange hover:border-primary-orange hover:bg-gray-900/70 text-primary-orange hover:text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed backdrop-blur-sm"
+                  whileHover={{ scale: 1.01 }}
+                  whileTap={{ scale: 0.99 }}
+                >
+                  {isLoading ? (
+                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                  ) : (
+                    <span>Join the Waitlist</span>
+                  )}
+                </motion.button>
                 <div className="relative">
                   <input
                     {...register('email')}
@@ -134,22 +152,6 @@ export default function Home() {
                     <p className="text-red-400 text-sm mt-2 text-left">{errors.email.message}</p>
                   )}
                 </div>
-                <motion.button
-                  type="submit"
-                  disabled={isLoading}
-                  className="w-full bg-orange-gradient hover:shadow-lg hover:shadow-primary-orange/25 text-white font-semibold py-4 px-6 rounded-lg transition-all duration-300 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  {isLoading ? (
-                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
-                  ) : (
-                    <>
-                      <span>Join the Waitlist</span>
-                      <ArrowRight className="w-5 h-5" />
-                    </>
-                  )}
-                </motion.button>
               </form>
             ) : (
               <motion.div
@@ -163,30 +165,6 @@ export default function Home() {
                 <p className="text-gray-400">We&apos;ll notify you when FreeLunch launches.</p>
               </motion.div>
             )}
-          </motion.div>
-
-          {/* Feature Icons */}
-          <motion.div
-            className="flex justify-center space-x-8 md:space-x-12 mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
-          >
-            {[
-              { icon: Brain, label: 'Smart AI' },
-              { icon: Zap, label: 'Lightning Fast' },
-              { icon: Sparkles, label: 'Innovative' },
-            ].map((feature) => (
-              <motion.div
-                key={feature.label}
-                className="flex flex-col items-center space-y-2 text-gray-400 hover:text-primary-orange transition-colors duration-300"
-                whileHover={{ scale: 1.1 }}
-                transition={{ duration: 0.2 }}
-              >
-                <feature.icon className="w-8 h-8" />
-                <span className="text-sm font-medium">{feature.label}</span>
-              </motion.div>
-            ))}
           </motion.div>
         </motion.div>
       </main>
