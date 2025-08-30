@@ -14,14 +14,33 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://freelunch.dev"),
-  title: "FreeLunch - AI Intelligence Platform",
-  description: "Revolutionize your workflow with cutting-edge AI technology that learns, adapts, and delivers unprecedented results. Join the waitlist for early access.",
-  keywords: "AI, artificial intelligence, productivity, automation, technology",
+  title: "Freelunch - AI Intelligence Platform",
+  description: "Everything you need to help your startup reach Google-level maturity in one unified platform. All-in-one open-source backend platform for DevOps, DataOps, MLOps, LLMOps.",
+  keywords: "AI, artificial intelligence, productivity, automation, technology, DevOps, DataOps, MLOps, LLMOps, backend platform",
+  icons: {
+    icon: [
+      {
+        url: "/favicon.ico",
+        sizes: "any",
+      },
+      {
+        url: "/icon.svg",
+        type: "image/svg+xml",
+      },
+    ],
+    apple: [
+      {
+        url: "/icon.svg",
+        sizes: "180x180",
+        type: "image/svg+xml",
+      },
+    ],
+  },
   openGraph: {
-    title: "FreeLunch - AI Intelligence Platform",
-    description: "Revolutionize your workflow with cutting-edge AI technology that learns, adapts, and delivers unprecedented results.",
+    title: "Freelunch - AI Intelligence Platform",
+    description: "Everything you need to help your startup reach Google-level maturity in one unified platform.",
     url: "https://freelunch.dev",
-    siteName: "FreeLunch",
+    siteName: "Freelunch",
     images: [
       {
         url: "/logo_freelunch.svg",
@@ -34,9 +53,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "FreeLunch - AI Intelligence Platform",
-    description: "Revolutionize your workflow with cutting-edge AI technology that learns, adapts, and delivers unprecedented results.",
-    images: ["/logo1.png"],
+    title: "Freelunch - AI Intelligence Platform",
+    description: "Everything you need to help your startup reach Google-level maturity in one unified platform.",
+    images: ["/logo_freelunch.svg"],
   },
 };
 

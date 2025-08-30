@@ -1,6 +1,6 @@
-# FreeLunch - AI Intelligence Platform Landing Page
+# Freelunch - AI Intelligence Platform Landing Page
 
-A modern, responsive landing page built with Next.js 14 for FreeLunch, an upcoming AI intelligence platform. The page features a sleek black and orange design with smooth animations and a waitlist signup functionality.
+A modern, responsive landing page built with Next.js 14 for Freelunch, an upcoming AI intelligence platform. The page features a sleek black and orange design with smooth animations and a waitlist signup functionality.
 
 ## 🚀 Features
 
@@ -138,7 +138,7 @@ Replace `/public/logo1.png.placeholder` with your actual logo file and rename it
 
 ## 📄 License
 
-This project is private and proprietary to FreeLunch.
+This project is private and proprietary to Freelunch.
 
 ## 🌐 Live Site
 

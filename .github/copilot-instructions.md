@@ -1,4 +1,4 @@
-<!-- FreeLunch Landing Page Project Status -->
+<!-- Freelunch Landing Page Project Status -->
 
 ## Project Completed Successfully! ✅
 
@@ -19,7 +19,7 @@
 
 ## 🎉 Project Ready for Deployment
 
-The FreeLunch landing page is now complete and ready for deployment to Vercel with the freelunch.dev domain.
+The Freelunch landing page is now complete and ready for deployment to Vercel with the freelunch.dev domain.
 
 ### Key Features Implemented:
 - Modern AI-focused landing page design

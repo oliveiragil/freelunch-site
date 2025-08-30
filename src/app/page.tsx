@@ -56,12 +56,12 @@ export default function Home() {
         <div className="flex items-center space-x-2">
           <Image
             src="/logo_freelunch.svg"
-            alt="FreeLunch Logo"
+            alt="Freelunch Logo"
             width={40}
             height={40}
             className="rounded-lg"
           />
-          <span className="text-xl font-bold">FreeLunch</span>
+          <span className="text-xl font-bold">Freelunch</span>
         </div>
       </motion.nav>
 
@@ -162,7 +162,7 @@ export default function Home() {
               >
                 <CheckCircle className="w-16 h-16 text-green-400 mx-auto mb-4" />
                 <h3 className="text-2xl font-semibold mb-2">You&apos;re on the list!</h3>
-                <p className="text-gray-400">We&apos;ll notify you when FreeLunch launches.</p>
+                <p className="text-gray-400">We&apos;ll notify you when Freelunch launches.</p>
               </motion.div>
             )}
           </motion.div>
@@ -177,7 +177,7 @@ export default function Home() {
         transition={{ duration: 0.8, delay: 1.4 }}
       >
         <p className="text-gray-500 text-sm">
-          © 2025 FreeLunch. All rights reserved. | Coming to{' '}
+          © 2025 Freelunch. All rights reserved. | Coming to{' '}
           <span className="text-primary-orange font-semibold">freelunch.dev</span>
         </p>
       </motion.footer>

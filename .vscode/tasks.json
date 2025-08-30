@@ -2,7 +2,7 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"label": "FreeLunch Dev Server",
+			"label": "Freelunch Dev Server",
 			"type": "shell",
 			"command": "npm run dev",
 			"isBackground": true,
