@@ -39,16 +39,18 @@ export default function VideoPlaceholder() {
         <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-8">
           {/* Logo Area */}
           <div className="flex items-center mb-6">
-            <Image
-              src="/logo_freelunch.svg"
-              alt="Freelunch Logo"
-              width={48}
-              height={48}
-              className="mr-4"
-            />
+            <div className="mr-4">
+              <Image
+                src="/logo_freelunch.svg"
+                alt="Freelunch Logo"
+                width={48}
+                height={48}
+                className="md:scale-125"
+              />
+            </div>
             <div className="text-right">
-              <h3 className="text-3xl font-bold text-orange-500">Freelunch</h3>
-              <p className="text-sm text-gray-300">AI Productivity Platform</p>
+              <h3 className="text-3xl md:text-4xl font-bold text-orange-500">Freelunch</h3>
+              <p className="text-sm md:text-base text-gray-300">AI Productivity Platform</p>
             </div>
           </div>
 

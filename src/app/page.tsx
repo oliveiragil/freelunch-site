@@ -55,14 +55,16 @@ export default function Home() {
         transition={{ duration: 0.6, delay: 0.3 }}
       >
         <div className="flex items-center space-x-2">
-          <Image
-            src="/logo_freelunch.svg"
-            alt="Freelunch Logo"
-            width={40}
-            height={40}
-            className="rounded-lg"
-          />
-          <span className="text-xl font-bold">Freelunch</span>
+          <div>
+            <Image
+              src="/logo_freelunch.svg"
+              alt="Freelunch Logo"
+              width={40}
+              height={40}
+              className="rounded-lg md:scale-125"
+            />
+          </div>
+          <span className="text-xl md:text-2xl font-bold">Freelunch</span>
         </div>
       </motion.nav>
 
