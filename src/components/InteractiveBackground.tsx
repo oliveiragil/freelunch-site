@@ -25,7 +25,6 @@ export default function InteractiveBackground({ height = '100vh' }: InteractiveB
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [mousePos, setMousePos] = useState<MousePosition>({ x: 0, y: 0 });
   const [scrollY, setScrollY] = useState(0);
-  const [isMouseOnPage, setIsMouseOnPage] = useState(true);
   const [animationSpeed, setAnimationSpeed] = useState(1);
   const particlesRef = useRef<Particle[]>([]);
   const animationRef = useRef<number | null>(null);
@@ -70,9 +69,19 @@ export default function InteractiveBackground({ height = '100vh' }: InteractiveB
 
   // Mouse tracking and page leave detection
   useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const container = canvas.parentElement;
+    if (!container) return;
+
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePos({ x: e.clientX, y: e.clientY });
-      setIsMouseOnPage(true);
+      // Calculate mouse position relative to the container
+      const rect = container.getBoundingClientRect();
+      setMousePos({ 
+        x: e.clientX - rect.left, 
+        y: e.clientY - rect.top 
+      });
       setAnimationSpeed(1);
       
       // Clear existing timeout
@@ -82,8 +91,6 @@ export default function InteractiveBackground({ height = '100vh' }: InteractiveB
     };
 
     const handleMouseLeave = () => {
-      setIsMouseOnPage(false);
-      
       // Set timeout to slow down animation after 5 seconds
       mouseLeaveTimeoutRef.current = setTimeout(() => {
         setAnimationSpeed(0.1); // Slow down to 10% speed
@@ -91,7 +98,6 @@ export default function InteractiveBackground({ height = '100vh' }: InteractiveB
     };
 
     const handleMouseEnter = () => {
-      setIsMouseOnPage(true);
       setAnimationSpeed(1);
       
       // Clear timeout if mouse re-enters
@@ -100,14 +106,14 @@ export default function InteractiveBackground({ height = '100vh' }: InteractiveB
       }
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseleave', handleMouseLeave);
-    document.addEventListener('mouseenter', handleMouseEnter);
+    container.addEventListener('mousemove', handleMouseMove);
+    container.addEventListener('mouseleave', handleMouseLeave);
+    container.addEventListener('mouseenter', handleMouseEnter);
     
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseleave', handleMouseLeave);
-      document.removeEventListener('mouseenter', handleMouseEnter);
+      container.removeEventListener('mousemove', handleMouseMove);
+      container.removeEventListener('mouseleave', handleMouseLeave);
+      container.removeEventListener('mouseenter', handleMouseEnter);
       if (mouseLeaveTimeoutRef.current) {
         clearTimeout(mouseLeaveTimeoutRef.current);
       }
@@ -203,11 +209,12 @@ export default function InteractiveBackground({ height = '100vh' }: InteractiveB
   return (
     <canvas
       ref={canvasRef}
-      className="absolute top-0 left-0 z-0 pointer-events-none"
+      className="absolute top-0 left-0 z-0"
       style={{ 
         background: 'transparent',
         height: height,
-        width: '100%'
+        width: '100%',
+        pointerEvents: 'none'
       }}
     />
   );
