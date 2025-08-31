@@ -6,7 +6,9 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import Image from 'next/image';
-import { Sparkles, CheckCircle } from 'lucide-react';
+import { CircleDot, CheckCircle } from 'lucide-react';
+import InteractiveBackground from '@/components/InteractiveBackground';
+import FeaturesSection from '@/components/FeaturesSection';
 
 const emailSchema = z.object({
   email: z.string().email('Please enter a valid email address'),
@@ -38,20 +40,18 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-hidden">
-      {/* Background Effects */}
-      <div className="fixed inset-0 z-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-orange opacity-10 rounded-full filter blur-3xl animate-float"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-primary-orange opacity-5 rounded-full filter blur-3xl animate-float" style={{ animationDelay: '3s' }}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-primary-orange/5 to-transparent rounded-full"></div>
-      </div>
+    <>
+      {/* First Section - Dark with Interactive Background */}
+      <div className="min-h-screen bg-gradient-to-b from-blue-950 to-black text-white overflow-hidden">
+        {/* Interactive Background - Limited to first section */}
+        <InteractiveBackground height="100vh" />
 
       {/* Navigation */}
       <motion.nav 
         className="relative z-10 flex justify-between items-center p-6 md:p-8"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
       >
         <div className="flex items-center space-x-2">
           <Image
@@ -78,11 +78,11 @@ export default function Home() {
             className="inline-flex items-center space-x-2 bg-primary-gray border border-primary-orange/20 rounded-full px-4 py-2 mb-8"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
           >
-            <Sparkles className="w-4 h-4 text-primary-orange" />
-            <span className="text-sm text-gray-300">The only tool your company needs</span>
-            <Sparkles className="w-4 h-4 text-primary-orange" />
+            <CircleDot className="w-4 h-4 text-primary-orange" />
+            <span className="text-sm text-gray-300">Open-source, all-in-one infrastructure to support startups post-MVP</span>
+            <CircleDot className="w-4 h-4 text-primary-orange" />
           </motion.div>
 
           {/* Main Headline */}
@@ -90,14 +90,14 @@ export default function Home() {
             className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent leading-tight"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
           >
             <span className="bg-orange-gradient bg-clip-text text-transparent animate-glow">
-              Freelunch AI
+              2-person Startup Unicorns
             </span>{' '}
-            will make
+            are the future,
             <span className="block">
-              2-person startup unicorns a reality.
+              and we are building it.
             </span>
           </motion.h1>
 
@@ -108,15 +108,11 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-            Everything you need to help your startup reach Google-level maturity in one unified platform.
+            Our first product is an open source platform for backends. PaaS platforms (e.g. <em>Heroku</em>) make backend DevOps easier, but have several problems: are expensive, lock you in, separate from where you design and code, not ai-native, not cloud-agnostic, don&apos;t offer the control DevOps engineers need sometimes, don&apos;t integrate well with their existing infra, don&apos;t have stellar UX.
             <br /><br />
-            Freelunch is all-in-one open-source backend platform easier to use and more flexible than popular combos of several separated tools to coding, test, build, deploy on some PaaS, Data Analisys, ALM, Project management, etc...
+            That&apos;s why a lot of companies still prefer to juggle a DevOps team + MLOps team + 10 different Ops tools + IDE. But we are building a better option.
             <br /><br />
-            The only tool your company needs for DevOps, DataOps, MLOps, LLMOps and any other Ops.
-            <br /><br />
-            Combines the AI-assisted development of Cursor + UX of N8N + Helper APIs of Dapr + K8s Gitops of Github Actions & ArgoCD + MLOps/LLMOps of MLflow & Langfuse + Project Management of Jira.
-            <br /><br />
-            Single platform that makes any programer become a full-stack backend/ML/AI engineer, working end-to-end: from data annotation and data ingestion to working endpoints and observability.
+            Imagine the PaaS experience of <em>Heroku</em> + the intuitive GUI of <em>N8N</em> + the AI support of <em>MLFlow</em> + the AI-assistance of <em>Cursor</em> in a single platform, without taking away control from low-level engineers.
           </motion.p>
 
           {/* Waitlist Form */}
@@ -124,7 +120,7 @@ export default function Home() {
             className="max-w-md mx-auto mb-16"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1 }}
+            transition={{ duration: 0.8, delay: 1.3 }}
           >
             {!isSubmitted ? (
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
@@ -176,11 +172,11 @@ export default function Home() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 1.4 }}
       >
-        <p className="text-gray-500 text-sm">
-          © 2025 Freelunch. All rights reserved. | Coming to{' '}
-          <span className="text-primary-orange font-semibold">freelunch.dev</span>
-        </p>
       </motion.footer>
-    </div>
+      </div>
+
+      {/* Second Section - Light with Features */}
+      <FeaturesSection />
+    </>
   );
 }
