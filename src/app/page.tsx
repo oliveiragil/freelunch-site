@@ -42,7 +42,7 @@ export default function Home() {
   return (
     <>
       {/* First Section - Dark with Interactive Background */}
-      <div className="min-h-screen bg-gradient-to-b from-blue-950 to-black text-white overflow-hidden">
+      <div className="relative min-h-screen bg-gradient-to-b from-blue-950 to-black text-white overflow-hidden">
         {/* Interactive Background - Limited to first section */}
         <InteractiveBackground height="100vh" />
 

@@ -203,7 +203,7 @@ export default function InteractiveBackground({ height = '100vh' }: InteractiveB
   return (
     <canvas
       ref={canvasRef}
-      className="fixed top-0 left-0 z-0 pointer-events-none"
+      className="absolute top-0 left-0 z-0 pointer-events-none"
       style={{ 
         background: 'transparent',
         height: height,
