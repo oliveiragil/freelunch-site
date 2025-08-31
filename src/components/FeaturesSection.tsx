@@ -105,11 +105,11 @@ export default function FeaturesSection() {
 
         {/* Features Carousel */}
         <div className="relative">
-          {/* Left Scroll Button */}
+          {/* Left Scroll Button - Hidden on mobile */}
           <button
             onClick={scrollLeft}
             disabled={!canScrollLeft}
-            className={`absolute left-0 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-gray-800 shadow-lg border border-gray-600 flex items-center justify-center transition-all duration-300 ${
+            className={`hidden md:flex absolute left-0 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-gray-800 shadow-lg border border-gray-600 items-center justify-center transition-all duration-300 ${
               canScrollLeft 
                 ? 'hover:bg-gray-700 text-white hover:shadow-xl' 
                 : 'text-gray-500 cursor-not-allowed'
@@ -118,11 +118,11 @@ export default function FeaturesSection() {
             <ChevronLeft className="w-6 h-6" />
           </button>
 
-          {/* Right Scroll Button */}
+          {/* Right Scroll Button - Hidden on mobile */}
           <button
             onClick={scrollRight}
             disabled={!canScrollRight}
-            className={`absolute right-0 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-gray-800 shadow-lg border border-gray-600 flex items-center justify-center transition-all duration-300 ${
+            className={`hidden md:flex absolute right-0 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-gray-800 shadow-lg border border-gray-600 items-center justify-center transition-all duration-300 ${
               canScrollRight 
                 ? 'hover:bg-gray-700 text-white hover:shadow-xl' 
                 : 'text-gray-500 cursor-not-allowed'
@@ -134,35 +134,45 @@ export default function FeaturesSection() {
           {/* Scrollable Container */}
           <div
             ref={scrollRef}
-            className="flex gap-6 overflow-x-auto scrollbar-hide px-12 py-4"
+            className="flex gap-4 md:gap-6 overflow-x-auto scrollbar-hide px-4 md:px-12 py-4 snap-x snap-mandatory"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             onScroll={checkScrollButtons}
           >
             {features.map((feature, index) => (
               <motion.div
                 key={feature.id}
-                className="flex-shrink-0 w-80 h-96 bg-white rounded-2xl shadow-lg border border-gray-100 p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+                className="flex-shrink-0 w-72 sm:w-80 h-80 sm:h-96 bg-white rounded-2xl shadow-lg border border-gray-100 p-6 sm:p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 snap-start"
                 initial={{ opacity: 0, x: 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
                 {/* Icon with Gradient Background */}
-                <div className={`w-16 h-16 rounded-xl bg-gradient-to-r ${feature.gradient} p-4 mb-6`}>
+                <div className={`w-12 h-12 sm:w-16 sm:h-16 rounded-xl bg-gradient-to-r ${feature.gradient} p-3 sm:p-4 mb-4 sm:mb-6`}>
                   <feature.icon className="w-full h-full text-white" />
                 </div>
 
                 {/* Content */}
-                <h3 className="text-2xl font-bold mb-4 text-gray-900">
+                <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-gray-900">
                   {feature.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                   {feature.description}
                 </p>
 
                 {/* Decorative Element */}
-                <div className={`mt-8 h-1 w-16 bg-gradient-to-r ${feature.gradient} rounded-full`}></div>
+                <div className={`mt-6 sm:mt-8 h-1 w-12 sm:w-16 bg-gradient-to-r ${feature.gradient} rounded-full`}></div>
               </motion.div>
+            ))}
+          </div>
+          
+          {/* Mobile scroll indicators */}
+          <div className="flex md:hidden justify-center mt-6 space-x-2">
+            {features.map((_, index) => (
+              <div
+                key={index}
+                className="w-2 h-2 rounded-full bg-gray-600 transition-colors duration-300"
+              />
             ))}
           </div>
         </div>
