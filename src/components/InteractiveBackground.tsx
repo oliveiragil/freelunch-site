@@ -24,7 +24,6 @@ interface InteractiveBackgroundProps {
 export default function InteractiveBackground({ height = '100vh' }: InteractiveBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [mousePos, setMousePos] = useState<MousePosition>({ x: 0, y: 0 });
-  const [scrollY, setScrollY] = useState(0);
   const [animationSpeed, setAnimationSpeed] = useState(1);
   const particlesRef = useRef<Particle[]>([]);
   const animationRef = useRef<number | null>(null);
@@ -120,16 +119,6 @@ export default function InteractiveBackground({ height = '100vh' }: InteractiveB
     };
   }, []);
 
-  // Scroll tracking
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   // Animation loop
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -141,15 +130,8 @@ export default function InteractiveBackground({ height = '100vh' }: InteractiveB
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Background gradient that changes with scroll
-      const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-      const scrollProgress = Math.min(scrollY / (document.body.scrollHeight - window.innerHeight), 1);
-      const darkBlueIntensity = Math.min(0.03 + scrollProgress * 0.09, 0.12); // Max 12% intensity (40% darker)
-      
-      gradient.addColorStop(0, `hsl(220, 100%, ${darkBlueIntensity * 100}%)`); // Dark blue
-      gradient.addColorStop(1, `hsl(0, 0%, 0%)`); // Black
-      
-      ctx.fillStyle = gradient;
+      // Background - solid black
+      ctx.fillStyle = 'black';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       // Update and draw particles
@@ -204,7 +186,7 @@ export default function InteractiveBackground({ height = '100vh' }: InteractiveB
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [mousePos, scrollY, animationSpeed]);
+  }, [mousePos, animationSpeed]);
 
   return (
     <canvas

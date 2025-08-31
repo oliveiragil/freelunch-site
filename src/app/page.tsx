@@ -9,6 +9,7 @@ import Image from 'next/image';
 import { CircleDot, CheckCircle } from 'lucide-react';
 import InteractiveBackground from '@/components/InteractiveBackground';
 import FeaturesSection from '@/components/FeaturesSection';
+import GradientSection from '@/components/GradientSection';
 
 const emailSchema = z.object({
   email: z.string().email('Please enter a valid email address'),
@@ -42,7 +43,7 @@ export default function Home() {
   return (
     <>
       {/* First Section - Dark with Interactive Background */}
-      <div className="relative min-h-screen bg-gradient-to-b from-blue-950 to-black text-white overflow-hidden">
+      <div className="relative min-h-screen bg-black text-white overflow-hidden">
         {/* Interactive Background - Limited to first section */}
         <InteractiveBackground height="100vh" />
 
@@ -54,14 +55,16 @@ export default function Home() {
         transition={{ duration: 0.6, delay: 0.3 }}
       >
         <div className="flex items-center space-x-2">
-          <Image
-            src="/logo_freelunch.svg"
-            alt="Freelunch Logo"
-            width={40}
-            height={40}
-            className="rounded-lg"
-          />
-          <span className="text-xl font-bold">Freelunch</span>
+          <div>
+            <Image
+              src="/logo_freelunch.svg"
+              alt="Freelunch Logo"
+              width={40}
+              height={40}
+              className="rounded-lg md:scale-125"
+            />
+          </div>
+          <span className="text-xl md:text-2xl font-bold">Freelunch</span>
         </div>
       </motion.nav>
 
@@ -167,13 +170,16 @@ export default function Home() {
 
       {/* Footer */}
       <motion.footer
-        className="relative z-10 text-center py-8 px-6 border-t border-gray-800"
+        className="relative z-10 text-center py-8 px-6 border-t border-black"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 1.4 }}
       >
       </motion.footer>
       </div>
+
+      {/* Gradient Section - Between first and second sections */}
+      <GradientSection />
 
       {/* Second Section - Light with Features */}
       <FeaturesSection />
