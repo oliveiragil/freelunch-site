@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import VideoPlaceholder from './VideoPlaceholder';
 
 export default function GradientSection() {
   const [scrollY, setScrollY] = useState(0);
@@ -31,12 +32,14 @@ export default function GradientSection() {
 
   return (
     <div 
-      className="h-screen"
+      className="h-screen flex items-center justify-center px-6"
       style={{
         background: gradientProgress > 0 
           ? `linear-gradient(to bottom, black 0%, hsl(220, 100%, ${blueIntensity * 100}%) 100%)`
           : 'black'
       }}
-    />
+    >
+      <VideoPlaceholder />
+    </div>
   );
 }
