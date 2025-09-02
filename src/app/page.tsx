@@ -54,7 +54,7 @@ export default function Home() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.3 }}
       >
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-4">
           <div>
             <Image
               src="/logo_freelunch.svg"
@@ -64,7 +64,7 @@ export default function Home() {
               className="rounded-lg md:scale-125"
             />
           </div>
-          <span className="text-xl md:text-2xl font-bold">Freelunch</span>
+          <span className="text-xl md:text-2xl font-bold font-carter-one text-orange-500" style={{fontFamily: "Carter One, Impact, Arial Black, cursive"}}>Freelunch</span>
         </div>
       </motion.nav>
 

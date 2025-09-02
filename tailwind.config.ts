@@ -17,6 +17,11 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        'carter-one': ['Carter One', 'Impact', 'Arial Black', 'cursive'],
+        'geist-sans': ['var(--font-geist-sans)', 'sans-serif'],
+        'geist-mono': ['var(--font-geist-mono)', 'monospace'],
+      },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',
         'slide-up': 'slideUp 0.6s ease-out',
@@ -48,9 +53,7 @@ export default {
         },
       },
       backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-        'orange-gradient': 'linear-gradient(135deg, #FF6B35 0%, #F7931E 100%)',
+        'orange-gradient': 'linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%)',
       },
     },
   },
