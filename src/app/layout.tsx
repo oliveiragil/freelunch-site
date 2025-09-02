@@ -66,6 +66,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link 
+          rel="preload" 
+          href="/fonts/CarterOne-Regular.ttf" 
+          as="font" 
+          type="font/ttf" 
+          crossOrigin="anonymous"
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
