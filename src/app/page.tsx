@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import Image from 'next/image';
-import { CircleDot, CheckCircle } from 'lucide-react';
+import { CheckCircle } from 'lucide-react';
 import InteractiveBackground from '@/components/InteractiveBackground';
 import FeaturesSection from '@/components/FeaturesSection';
 import GradientSection from '@/components/GradientSection';
@@ -49,78 +49,56 @@ export default function Home() {
 
       {/* Navigation */}
       <motion.nav 
-        className="relative z-10 flex justify-between items-center p-6 md:p-8"
+        className="relative z-10 flex justify-center items-center p-6 md:p-8 lg:p-12"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.3 }}
       >
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-4 md:space-x-6 lg:space-x-8">
           <div>
             <Image
               src="/logo_freelunch.svg"
               alt="Freelunch Logo"
-              width={40}
-              height={40}
-              className="rounded-lg md:scale-125"
+              width={60}
+              height={60}
+              className="rounded-lg sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28 2xl:w-32 2xl:h-32"
             />
           </div>
-          <span className="text-xl md:text-2xl font-bold font-carter-one text-orange-500" style={{fontFamily: "Carter One, Impact, Arial Black, cursive"}}>Freelunch</span>
+          <span 
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold font-carter-one" 
+            style={{fontFamily: "Carter One, Impact, Arial Black, cursive", color: "#B4884B"}}
+          >
+            Freelunch
+          </span>
         </div>
       </motion.nav>
 
       {/* Main Content */}
-      <main className="relative z-10 flex flex-col items-center justify-center min-h-[calc(100vh-100px)] px-6 text-center">
+      <main className="relative z-10 flex flex-col justify-start lg:justify-center min-h-[calc(100vh-100px)] px-4 sm:px-6 md:px-12 lg:px-16 xl:px-20 2xl:px-24 py-8 lg:py-0">
         <motion.div
-          className="max-w-4xl mx-auto"
+          className="max-w-full w-full flex flex-col lg:flex-row lg:items-start lg:gap-8 xl:gap-12"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          {/* Hero Badge */}
-          <motion.div
-            className="inline-flex items-center space-x-2 bg-primary-gray border border-primary-orange/20 rounded-full px-4 py-2 mb-8"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-          >
-            <CircleDot className="w-4 h-4 text-primary-orange" />
-            <span className="text-sm text-gray-300">Open-source, all-in-one infrastructure to support startups post-MVP</span>
-            <CircleDot className="w-4 h-4 text-primary-orange" />
-          </motion.div>
-
           {/* Main Headline */}
           <motion.h1
-            className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent leading-tight"
+            className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black font-headline mb-4 sm:mb-6 md:mb-6 lg:mb-0 text-white leading-tight uppercase tracking-wide flex-1 text-left"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
           >
-            <span className="bg-orange-gradient bg-clip-text text-transparent animate-glow">
-              2-person Startup Unicorns
-            </span>{' '}
-            are the future,
-            <span className="block">
-              and we are building it.
+            <span className="text-white block text-left">
+              <span className="block whitespace-nowrap">FREELUNCH WILL MAKE</span>
+              <span className="block whitespace-nowrap">2-PERSON STARTUP</span>
+              <span className="block whitespace-nowrap">UNICORNS A</span>
+              <span className="block whitespace-nowrap">REALITY.</span>
             </span>
           </motion.h1>
 
-          {/* Subtitle */}
-          <motion.p
-            className="text-xl md:text-2xl text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-          >
-            Our first product is an open source platform for backends. PaaS platforms (e.g. <em>Heroku</em>) make backend DevOps easier, but have several problems: are expensive, lock you in, separate from where you design and code, not ai-native, not cloud-agnostic, don&apos;t offer the control DevOps engineers need sometimes, don&apos;t integrate well with their existing infra, don&apos;t have stellar UX.
-            <br /><br />
-            That&apos;s why a lot of companies still prefer to juggle a DevOps team + MLOps team + 10 different Ops tools + IDE. But we are building a better option.
-            <br /><br />
-            Imagine the PaaS experience of <em>Heroku</em> + the intuitive GUI of <em>N8N</em> + the AI support of <em>MLFlow</em> + the AI-assistance of <em>Cursor</em> in a single platform, without taking away control from low-level engineers.
-          </motion.p>
-
           {/* Waitlist Form */}
           <motion.div
-            className="max-w-md mx-auto mb-16"
+            className="w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-sm xl:max-w-md lg:flex-shrink-0 lg:self-center mb-6 sm:mb-8 md:mb-10 lg:mb-0"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.3 }}
@@ -130,7 +108,7 @@ export default function Home() {
                 <motion.button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full bg-gray-900/50 border border-primary-orange hover:border-primary-orange hover:bg-gray-900/70 text-primary-orange hover:text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed backdrop-blur-sm"
+                  className="w-full bg-gray-900/50 border border-primary-orange hover:border-primary-orange hover:bg-gray-900/70 text-primary-orange hover:text-white font-medium py-3 sm:py-4 px-4 sm:px-6 rounded-lg transition-all duration-300 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed backdrop-blur-sm text-sm sm:text-base"
                   whileHover={{ scale: 1.01 }}
                   whileTap={{ scale: 0.99 }}
                 >
@@ -145,7 +123,7 @@ export default function Home() {
                     {...register('email')}
                     type="email"
                     placeholder="Enter your email address"
-                    className="w-full px-6 py-4 bg-primary-gray border border-gray-700 rounded-lg focus:outline-none focus:border-primary-orange transition-all duration-300 text-white placeholder-gray-400"
+                    className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-primary-gray border border-gray-700 rounded-lg focus:outline-none focus:border-primary-orange transition-all duration-300 text-white placeholder-gray-400 text-sm sm:text-base"
                   />
                   {errors.email && (
                     <p className="text-red-400 text-sm mt-2 text-left">{errors.email.message}</p>
