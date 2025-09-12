@@ -71,7 +71,7 @@ export default function FeaturesSection() {
   };
 
   return (
-    <section className="bg-black text-white py-16 md:py-24">
+    <section className="bg-green-100 text-gray-800 py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         {/* Section Header */}
         <motion.div
@@ -84,7 +84,7 @@ export default function FeaturesSection() {
           <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: '#1E6091' }}>
             What You&apos;ll Unlock with Freelunch
           </h2>
-          <p className="text-xl text-white max-w-3xl mx-auto">
+          <p className="text-xl max-w-3xl mx-auto" style={{ color: '#1E6091' }}>
             Everything you need to transform your startup into a unicorn, all in one unified platform.
           </p>
         </motion.div>
@@ -95,10 +95,10 @@ export default function FeaturesSection() {
           <button
             onClick={scrollLeft}
             disabled={!canScrollLeft}
-            className={`hidden md:flex absolute left-0 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-gray-800 shadow-lg border border-gray-600 items-center justify-center transition-all duration-300 ${
+            className={`hidden md:flex absolute left-0 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white shadow-lg border border-gray-300 items-center justify-center transition-all duration-300 ${
               canScrollLeft 
-                ? 'hover:bg-gray-700 text-white hover:shadow-xl' 
-                : 'text-gray-500 cursor-not-allowed'
+                ? 'hover:bg-gray-50 text-gray-700 hover:shadow-xl' 
+                : 'text-gray-400 cursor-not-allowed'
             }`}
           >
             <ChevronLeft className="w-6 h-6" />
@@ -108,10 +108,10 @@ export default function FeaturesSection() {
           <button
             onClick={scrollRight}
             disabled={!canScrollRight}
-            className={`hidden md:flex absolute right-0 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-gray-800 shadow-lg border border-gray-600 items-center justify-center transition-all duration-300 ${
+            className={`hidden md:flex absolute right-0 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white shadow-lg border border-gray-300 items-center justify-center transition-all duration-300 ${
               canScrollRight 
-                ? 'hover:bg-gray-700 text-white hover:shadow-xl' 
-                : 'text-gray-500 cursor-not-allowed'
+                ? 'hover:bg-gray-50 text-gray-700 hover:shadow-xl' 
+                : 'text-gray-400 cursor-not-allowed'
             }`}
           >
             <ChevronRight className="w-6 h-6" />
@@ -157,7 +157,7 @@ export default function FeaturesSection() {
             {features.map((_, index) => (
               <div
                 key={index}
-                className="w-2 h-2 rounded-full bg-gray-600 transition-colors duration-300"
+                className="w-2 h-2 rounded-full bg-gray-400 transition-colors duration-300"
               />
             ))}
           </div>

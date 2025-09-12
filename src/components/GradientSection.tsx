@@ -5,10 +5,7 @@ import { motion } from 'framer-motion';
 export default function GradientSection() {
   return (
     <div 
-      className="min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 md:px-12 lg:px-16 xl:px-20 2xl:px-24 py-16 sm:py-20 md:py-24"
-      style={{
-        backgroundColor: '#1E6091' // Azul-mediterrâneo
-      }}
+      className="min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 md:px-12 lg:px-16 xl:px-20 2xl:px-24 py-16 sm:py-20 md:py-24 bg-stone-50"
     >
       {/* Content Text */}
       <motion.div
