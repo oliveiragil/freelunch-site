@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -9,6 +10,8 @@ import Image from 'next/image';
 import { CheckCircle } from 'lucide-react';
 import FeaturesSection from '@/components/FeaturesSection';
 import GradientSection from '@/components/GradientSection';
+// import SupabaseDebug from '@/components/SupabaseDebug'; // Debug desabilitado
+import { supabase } from '@/lib/supabase';
 
 const emailSchema = z.object({
   email: z.string().email('Please enter a valid email address'),
@@ -19,6 +22,7 @@ type EmailForm = z.infer<typeof emailSchema>;
 export default function Home() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const {
     register,
@@ -29,14 +33,104 @@ export default function Home() {
     resolver: zodResolver(emailSchema),
   });
 
+  // Função para testar a conectividade básica
+  const testConnection = async () => {
+    console.log('🧪 Testando conexão com Supabase...');
+    try {
+      const { data, error } = await supabase
+        .from('emails')
+        .select('count', { count: 'exact', head: true });
+      
+      console.log('📊 Resultado do teste:', { data, error });
+      if (error) {
+        console.error('❌ Erro no teste de conexão:', error);
+        return false;
+      }
+      console.log('✅ Teste de conexão bem-sucedido');
+      return true;
+    } catch (err) {
+      console.error('💥 Erro inesperado no teste:', err);
+      return false;
+    }
+  };
+
+  // Executar teste de conexão quando o componente montar
+  React.useEffect(() => {
+    testConnection();
+  }, []);
+
   const onSubmit = async (data: EmailForm) => {
+    console.log('🚀 Iniciando submissão do email:', data.email);
     setIsLoading(true);
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    console.log('Email submitted:', data.email);
-    setIsSubmitted(true);
-    setIsLoading(false);
-    reset();
+    setError(null);
+    
+    try {
+      // Primeiro, vamos testar a conexão novamente
+      console.log('🔍 Testando conexão antes da operação...');
+      const connectionTest = await testConnection();
+      if (!connectionTest) {
+        throw new Error('Falha no teste de conexão');
+      }
+
+      console.log('� Inserindo email na base de dados...');
+      
+      // Inserir email diretamente (duplicatas serão tratadas pelo constraint UNIQUE)
+      const { data: insertedData, error: insertError } = await supabase
+        .from('emails')
+        .insert([
+          { email_address: data.email }
+        ])
+        .select();
+
+      console.log('📊 Resultado da inserção:', { 
+        insertedData, 
+        insertError,
+        hasError: !!insertError,
+        insertSuccess: !insertError && insertedData?.length > 0
+      });
+
+      if (insertError) {
+        console.error('❌ Erro na inserção:', insertError);
+        
+        // Se o erro for de email duplicado, tratar como sucesso
+        if (insertError.code === '23505' || insertError.message?.includes('duplicate')) {
+          console.log('ℹ️ Email já existe - tratado como sucesso');
+          setSuccess('Email adicionado à waitlist com sucesso!');
+          setIsSubmitted(true);
+          reset();
+          setIsLoading(false);
+          return;
+        }
+        
+        throw insertError;
+      }
+
+      console.log('🎉 Email salvo com sucesso!', insertedData);
+      setIsSubmitted(true);
+      reset();
+    } catch (err: unknown) {
+      console.error('💥 Erro completo no processo:', err);
+      
+      // Log detalhado do erro
+      if (err && typeof err === 'object') {
+        console.error('📋 Detalhes do erro:', JSON.stringify(err, null, 2));
+      }
+      
+      // Mensagens de erro mais específicas
+      const errorMsg = String(err);
+      if (errorMsg.includes('relation "emails" does not exist')) {
+        setError('❌ Tabela não encontrada. Execute o script SQL no Supabase Dashboard.');
+      } else if (errorMsg.includes('permission denied')) {
+        setError('❌ Permissão negada. Verifique as políticas RLS no Supabase.');
+      } else if (errorMsg.includes('Falha no teste de conexão')) {
+        setError('❌ Falha na conexão com Supabase. Verifique as credenciais.');
+      } else {
+        setError('❌ Erro ao salvar email. Verifique a configuração do Supabase.');
+      }
+    } finally {
+      setIsLoading(false);
+      console.log('🏁 Processo de submissão finalizado');
+    }
   };
 
   return (
@@ -151,6 +245,9 @@ export default function Home() {
                   {errors.email && (
                     <p className="text-red-400 text-sm mt-2 text-left">{errors.email.message}</p>
                   )}
+                  {error && (
+                    <p className="text-red-400 text-sm mt-2 text-left">{error}</p>
+                  )}
                 </div>
               </form>
             ) : (
@@ -201,6 +298,9 @@ export default function Home() {
 
       {/* Second Section - Light with Features */}
       <FeaturesSection />
+
+      {/* Debug Component - Desabilitado após configuração bem-sucedida */}
+      {/* <SupabaseDebug /> */}
     </>
   );
 }
