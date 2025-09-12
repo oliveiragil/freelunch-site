@@ -6,8 +6,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import Image from 'next/image';
-import { CircleDot, CheckCircle } from 'lucide-react';
-import InteractiveBackground from '@/components/InteractiveBackground';
+import { CheckCircle } from 'lucide-react';
 import FeaturesSection from '@/components/FeaturesSection';
 import GradientSection from '@/components/GradientSection';
 
@@ -42,95 +41,79 @@ export default function Home() {
 
   return (
     <>
-      {/* First Section - Dark with Interactive Background */}
-      <div className="relative min-h-screen bg-black text-white overflow-hidden">
-        {/* Interactive Background - Limited to first section */}
-        <InteractiveBackground height="100vh" />
+      {/* First Section - Unicorns Background */}
+      <div className="relative min-h-screen text-white overflow-hidden">
+        {/* Background with CSS fallback - Fantasy Forest Theme */}
+        <div 
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
+              url('/unicorns-forrest.jpg')
+            `,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
+        ></div>
+        {/* Overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/30 z-10"></div>
 
       {/* Navigation */}
       <motion.nav 
-        className="relative z-10 flex justify-between items-center p-6 md:p-8"
+        className="relative z-20 flex justify-start items-center p-6 md:p-8 lg:p-12"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.3 }}
       >
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-4 md:space-x-6 lg:space-x-8">
           <div>
             <Image
               src="/logo_freelunch.svg"
               alt="Freelunch Logo"
-              width={40}
-              height={40}
-              className="rounded-lg md:scale-125"
+              width={60}
+              height={60}
+              className="rounded-lg sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28 2xl:w-32 2xl:h-32"
             />
           </div>
-          <span className="text-xl md:text-2xl font-bold font-carter-one text-orange-500" style={{fontFamily: "Carter One, Impact, Arial Black, cursive"}}>Freelunch</span>
+          <span 
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold font-carter-one" 
+            style={{fontFamily: "Carter One, Impact, Arial Black, cursive", color: "#ffffff"}}
+          >
+            Freelunch
+          </span>
         </div>
       </motion.nav>
 
       {/* Main Content */}
-      <main className="relative z-10 flex flex-col items-center justify-center min-h-[calc(100vh-100px)] px-6 text-center">
-        <motion.div
-          className="max-w-4xl mx-auto"
+      <main className="relative z-20 h-[calc(100vh-120px)] px-4 sm:px-6 md:px-12 lg:px-16 xl:px-20 2xl:px-24">
+        {/* Main Headline - Canto Superior Direito */}
+        <motion.h1
+          className="absolute top-4 sm:top-6 md:top-6 lg:top-8 xl:top-8 right-4 sm:right-6 md:right-12 lg:right-16 xl:right-20 2xl:right-24 text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black font-headline text-white leading-tight tracking-wide text-right"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.8, delay: 0.7 }}
         >
-          {/* Hero Badge */}
-          <motion.div
-            className="inline-flex items-center space-x-2 bg-primary-gray border border-primary-orange/20 rounded-full px-4 py-2 mb-8"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-          >
-            <CircleDot className="w-4 h-4 text-primary-orange" />
-            <span className="text-sm text-gray-300">Open-source, all-in-one infrastructure to support startups post-MVP</span>
-            <CircleDot className="w-4 h-4 text-primary-orange" />
-          </motion.div>
+          <span className="text-white block text-right">
+            <span className="block whitespace-nowrap">Powering 2-person</span>
+            <span className="block whitespace-nowrap">Startup Unicorns</span>
+            <span className="block whitespace-nowrap">of tomorrow.</span>
+          </span>
+        </motion.h1>
 
-          {/* Main Headline */}
-          <motion.h1
-            className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent leading-tight"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-          >
-            <span className="bg-orange-gradient bg-clip-text text-transparent animate-glow">
-              2-person Startup Unicorns
-            </span>{' '}
-            are the future,
-            <span className="block">
-              and we are building it.
-            </span>
-          </motion.h1>
-
-          {/* Subtitle */}
-          <motion.p
-            className="text-xl md:text-2xl text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-          >
-            Our first product is an open source platform for backends. PaaS platforms (e.g. <em>Heroku</em>) make backend DevOps easier, but have several problems: are expensive, lock you in, separate from where you design and code, not ai-native, not cloud-agnostic, don&apos;t offer the control DevOps engineers need sometimes, don&apos;t integrate well with their existing infra, don&apos;t have stellar UX.
-            <br /><br />
-            That&apos;s why a lot of companies still prefer to juggle a DevOps team + MLOps team + 10 different Ops tools + IDE. But we are building a better option.
-            <br /><br />
-            Imagine the PaaS experience of <em>Heroku</em> + the intuitive GUI of <em>N8N</em> + the AI support of <em>MLFlow</em> + the AI-assistance of <em>Cursor</em> in a single platform, without taking away control from low-level engineers.
-          </motion.p>
-
-          {/* Waitlist Form */}
-          <motion.div
-            className="max-w-md mx-auto mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.3 }}
-          >
+        {/* Waitlist Form - Canto Inferior Esquerdo */}
+        <motion.div
+          className="absolute bottom-16 sm:bottom-20 md:bottom-24 lg:bottom-28 xl:bottom-32 left-4 sm:left-6 md:left-12 lg:left-16 xl:left-20 2xl:left-24 w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-sm xl:max-w-md"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.3 }}
+        >
             {!isSubmitted ? (
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                 <motion.button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full bg-gray-900/50 border border-primary-orange hover:border-primary-orange hover:bg-gray-900/70 text-primary-orange hover:text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed backdrop-blur-sm"
+                  className="w-full bg-gray-900/50 border border-primary-orange hover:border-primary-orange hover:bg-gray-900/70 text-primary-orange hover:text-white font-medium py-3 sm:py-4 px-4 sm:px-6 rounded-lg transition-all duration-300 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed backdrop-blur-sm text-sm sm:text-base"
                   whileHover={{ scale: 1.01 }}
                   whileTap={{ scale: 0.99 }}
                 >
@@ -145,7 +128,7 @@ export default function Home() {
                     {...register('email')}
                     type="email"
                     placeholder="Enter your email address"
-                    className="w-full px-6 py-4 bg-primary-gray border border-gray-700 rounded-lg focus:outline-none focus:border-primary-orange transition-all duration-300 text-white placeholder-gray-400"
+                    className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-primary-gray border border-white rounded-lg focus:outline-none focus:border-primary-orange transition-all duration-300 text-white placeholder-gray-400 text-sm sm:text-base"
                   />
                   {errors.email && (
                     <p className="text-red-400 text-sm mt-2 text-left">{errors.email.message}</p>
@@ -165,17 +148,16 @@ export default function Home() {
               </motion.div>
             )}
           </motion.div>
-        </motion.div>
-      </main>
 
       {/* Footer */}
       <motion.footer
-        className="relative z-10 text-center py-8 px-6 border-t border-black"
+        className="relative z-20 text-center py-8 px-6"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 1.4 }}
       >
       </motion.footer>
+      </main>
       </div>
 
       {/* Gradient Section - Between first and second sections */}

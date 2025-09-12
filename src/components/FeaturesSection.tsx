@@ -2,7 +2,7 @@
 
 import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Zap, Shield, Rocket, Globe, Database, Code } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Shield, Database, Code, Brain } from 'lucide-react';
 
 interface FeatureCard {
   id: string;
@@ -28,11 +28,11 @@ const features: FeatureCard[] = [
     gradient: 'from-blue-500 to-cyan-500'
   },
   {
-    id: 'scale',
-    title: 'Scale Instantly',
-    description: 'From startup to unicorn, our platform grows with your business needs.',
-    icon: Rocket,
-    gradient: 'from-purple-500 to-pink-500'
+    id: 'ai-assistance',
+    title: 'AI Assistance',
+    description: 'Achieve high-level code with AI Assistance, increasing your productivity and accuracy.',
+    icon: Brain,
+    gradient: 'from-purple-500 to-indigo-500'
   },
   {
     id: 'security',
@@ -40,20 +40,6 @@ const features: FeatureCard[] = [
     description: 'Bank-level security with compliance frameworks built-in from day one.',
     icon: Shield,
     gradient: 'from-green-500 to-emerald-500'
-  },
-  {
-    id: 'global',
-    title: 'Global Infrastructure',
-    description: 'Deploy anywhere in the world with our distributed cloud infrastructure.',
-    icon: Globe,
-    gradient: 'from-indigo-500 to-blue-500'
-  },
-  {
-    id: 'performance',
-    title: 'Lightning Fast',
-    description: 'Optimized performance that delivers results faster than traditional solutions.',
-    icon: Zap,
-    gradient: 'from-yellow-500 to-orange-500'
   }
 ];
 
@@ -95,10 +81,10 @@ export default function FeaturesSection() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: '#1E6091' }}>
             What You&apos;ll Unlock with Freelunch
           </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+          <p className="text-xl text-white max-w-3xl mx-auto">
             Everything you need to transform your startup into a unicorn, all in one unified platform.
           </p>
         </motion.div>
