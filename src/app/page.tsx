@@ -93,9 +93,23 @@ export default function Home() {
         console.error('❌ Erro na inserção:', insertError);
         
         // Se o erro for de email duplicado, tratar como sucesso
-        if (insertError.code === '23505' || insertError.message?.includes('duplicate')) {
-          console.log('ℹ️ Email já existe - tratado como sucesso');
-          setSuccess('Email adicionado à waitlist com sucesso!');
+        if (
+          insertError.code === '23505' || 
+          insertError.message?.includes('duplicate') ||
+          insertError.message?.includes('unique') ||
+          insertError.message?.includes('already exists') ||
+          insertError.details?.includes('duplicate') ||
+          insertError.details?.includes('unique') ||
+          insertError.hint?.includes('duplicate') ||
+          insertError.hint?.includes('unique')
+        ) {
+          console.log('✅ Email já existe - exibindo sucesso para o usuário');
+          console.log('🔍 Detalhes do erro de duplicata:', {
+            code: insertError.code,
+            message: insertError.message,
+            details: insertError.details,
+            hint: insertError.hint
+          });
           setIsSubmitted(true);
           reset();
           setIsLoading(false);
@@ -118,6 +132,24 @@ export default function Home() {
       
       // Mensagens de erro mais específicas
       const errorMsg = String(err);
+      
+      // Verificar se é erro de email duplicado
+      if (
+        errorMsg.includes('duplicate') ||
+        errorMsg.includes('unique') ||
+        errorMsg.includes('already exists') ||
+        errorMsg.includes('23505') ||
+        errorMsg.includes('constraint') ||
+        (err && typeof err === 'object' && 'code' in err && err.code === '23505')
+      ) {
+        console.log('✅ Email duplicado capturado no catch - exibindo sucesso para o usuário');
+        console.log('🔍 Erro completo capturado:', err);
+        setIsSubmitted(true);
+        reset();
+        setIsLoading(false);
+        return;
+      }
+      
       if (errorMsg.includes('relation "emails" does not exist')) {
         setError('❌ Tabela não encontrada. Execute o script SQL no Supabase Dashboard.');
       } else if (errorMsg.includes('permission denied')) {
