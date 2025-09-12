@@ -7,7 +7,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import Image from 'next/image';
 import { CheckCircle } from 'lucide-react';
-import InteractiveBackground from '@/components/InteractiveBackground';
 import FeaturesSection from '@/components/FeaturesSection';
 import GradientSection from '@/components/GradientSection';
 
@@ -42,14 +41,27 @@ export default function Home() {
 
   return (
     <>
-      {/* First Section - Dark with Interactive Background */}
-      <div className="relative min-h-screen bg-black text-white overflow-hidden">
-        {/* Interactive Background - Limited to first section */}
-        <InteractiveBackground height="100vh" />
+      {/* First Section - Unicorns Background */}
+      <div className="relative min-h-screen text-white overflow-hidden">
+        {/* Background with CSS fallback - Fantasy Forest Theme */}
+        <div 
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
+              url('/unicorns-forrest.jpg')
+            `,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
+        ></div>
+        {/* Overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/30 z-10"></div>
 
       {/* Navigation */}
       <motion.nav 
-        className="relative z-10 flex justify-center items-center p-6 md:p-8 lg:p-12"
+        className="relative z-20 flex justify-start items-center p-6 md:p-8 lg:p-12"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.3 }}
@@ -66,7 +78,7 @@ export default function Home() {
           </div>
           <span 
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold font-carter-one" 
-            style={{fontFamily: "Carter One, Impact, Arial Black, cursive", color: "#B4884B"}}
+            style={{fontFamily: "Carter One, Impact, Arial Black, cursive", color: "#ffffff"}}
           >
             Freelunch
           </span>
@@ -74,35 +86,28 @@ export default function Home() {
       </motion.nav>
 
       {/* Main Content */}
-      <main className="relative z-10 flex flex-col justify-start lg:justify-center min-h-[calc(100vh-100px)] px-4 sm:px-6 md:px-12 lg:px-16 xl:px-20 2xl:px-24 py-8 lg:py-0">
-        <motion.div
-          className="max-w-full w-full flex flex-col lg:flex-row lg:items-start lg:gap-8 xl:gap-12"
+      <main className="relative z-20 h-[calc(100vh-120px)] px-4 sm:px-6 md:px-12 lg:px-16 xl:px-20 2xl:px-24">
+        {/* Main Headline - Canto Superior Direito */}
+        <motion.h1
+          className="absolute top-4 sm:top-6 md:top-6 lg:top-8 xl:top-8 right-4 sm:right-6 md:right-12 lg:right-16 xl:right-20 2xl:right-24 text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black font-headline text-white leading-tight tracking-wide text-right"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.8, delay: 0.7 }}
         >
-          {/* Main Headline */}
-          <motion.h1
-            className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black font-headline mb-4 sm:mb-6 md:mb-6 lg:mb-0 text-white leading-tight uppercase tracking-wide flex-1 text-left"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-          >
-            <span className="text-white block text-left">
-              <span className="block whitespace-nowrap">FREELUNCH WILL MAKE</span>
-              <span className="block whitespace-nowrap">2-PERSON STARTUP</span>
-              <span className="block whitespace-nowrap">UNICORNS A</span>
-              <span className="block whitespace-nowrap">REALITY.</span>
-            </span>
-          </motion.h1>
+          <span className="text-white block text-right">
+            <span className="block whitespace-nowrap">Powering 2-person</span>
+            <span className="block whitespace-nowrap">Startup Unicorns</span>
+            <span className="block whitespace-nowrap">of tomorrow.</span>
+          </span>
+        </motion.h1>
 
-          {/* Waitlist Form */}
-          <motion.div
-            className="w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-sm xl:max-w-md lg:flex-shrink-0 lg:self-center mb-6 sm:mb-8 md:mb-10 lg:mb-0"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.3 }}
-          >
+        {/* Waitlist Form - Canto Inferior Esquerdo */}
+        <motion.div
+          className="absolute bottom-16 sm:bottom-20 md:bottom-24 lg:bottom-28 xl:bottom-32 left-4 sm:left-6 md:left-12 lg:left-16 xl:left-20 2xl:left-24 w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-sm xl:max-w-md"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.3 }}
+        >
             {!isSubmitted ? (
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                 <motion.button
@@ -123,7 +128,7 @@ export default function Home() {
                     {...register('email')}
                     type="email"
                     placeholder="Enter your email address"
-                    className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-primary-gray border border-gray-700 rounded-lg focus:outline-none focus:border-primary-orange transition-all duration-300 text-white placeholder-gray-400 text-sm sm:text-base"
+                    className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-primary-gray border border-white rounded-lg focus:outline-none focus:border-primary-orange transition-all duration-300 text-white placeholder-gray-400 text-sm sm:text-base"
                   />
                   {errors.email && (
                     <p className="text-red-400 text-sm mt-2 text-left">{errors.email.message}</p>
@@ -143,17 +148,16 @@ export default function Home() {
               </motion.div>
             )}
           </motion.div>
-        </motion.div>
-      </main>
 
       {/* Footer */}
       <motion.footer
-        className="relative z-10 text-center py-8 px-6 border-t border-black"
+        className="relative z-20 text-center py-8 px-6"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 1.4 }}
       >
       </motion.footer>
+      </main>
       </div>
 
       {/* Gradient Section - Between first and second sections */}

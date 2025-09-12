@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://freelunch.dev"),
-  title: "Freelunch - AI Intelligence Platform",
+  title: "Freelunch - DevOps | MLOps Platform",
   description: "Everything you need to help your startup reach Google-level maturity in one unified platform. All-in-one open-source backend platform for DevOps, DataOps, MLOps, LLMOps.",
   keywords: "AI, artificial intelligence, productivity, automation, technology, DevOps, DataOps, MLOps, LLMOps, backend platform",
   icons: {
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    title: "Freelunch - AI Intelligence Platform",
+    title: "Freelunch - DevOps | MLOps Platform",
     description: "Everything you need to help your startup reach Google-level maturity in one unified platform.",
     url: "https://freelunch.dev",
     siteName: "Freelunch",
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Freelunch - AI Intelligence Platform",
+    title: "Freelunch - DevOps | MLOps Platform",
     description: "Everything you need to help your startup reach Google-level maturity in one unified platform.",
     images: ["/logo_freelunch.svg"],
   },
