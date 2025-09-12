@@ -61,12 +61,12 @@ export default function Home() {
 
       {/* Navigation */}
       <motion.nav 
-        className="relative z-20 flex justify-start items-center p-6 md:p-8 lg:p-12"
+        className="relative z-20"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.3 }}
       >
-        <div className="flex items-center space-x-4 md:space-x-6 lg:space-x-8">
+        <div className="absolute top-6 md:top-8 lg:top-12 right-4 sm:right-6 md:right-12 lg:right-16 xl:right-20 2xl:right-24 flex items-center space-x-4 md:space-x-6 lg:space-x-8">
           <div>
             <Image
               src="/logo_freelunch.svg"
@@ -78,7 +78,11 @@ export default function Home() {
           </div>
           <span 
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold font-carter-one" 
-            style={{fontFamily: "Carter One, Impact, Arial Black, cursive", color: "#ffffff"}}
+            style={{
+              fontFamily: "Carter One, Impact, Arial Black, cursive", 
+              color: "#48341B",
+              textShadow: "0 0 2px white, 0 0 4px white, 1px 1px 0 white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white"
+            }}
           >
             Freelunch
           </span>
@@ -89,21 +93,35 @@ export default function Home() {
       <main className="relative z-20 h-[calc(100vh-120px)] px-4 sm:px-6 md:px-12 lg:px-16 xl:px-20 2xl:px-24">
         {/* Main Headline - Canto Superior Direito */}
         <motion.h1
-          className="absolute top-4 sm:top-6 md:top-6 lg:top-8 xl:top-8 right-4 sm:right-6 md:right-12 lg:right-16 xl:right-20 2xl:right-24 text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black font-headline text-white leading-tight tracking-wide text-right"
+          className="absolute top-24 sm:top-28 md:top-32 lg:top-36 xl:top-40 2xl:top-44 right-4 sm:right-6 md:right-12 lg:right-16 xl:right-20 2xl:right-24 text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black font-headline text-white leading-tight tracking-wide text-right"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.7 }}
         >
           <span className="text-white block text-right">
-            <span className="block whitespace-nowrap">Powering 2-person</span>
-            <span className="block whitespace-nowrap">Startup Unicorns</span>
-            <span className="block whitespace-nowrap">of tomorrow.</span>
+            <span className="block whitespace-nowrap">POWERING 2-PERSON</span>
+            <span className="block whitespace-nowrap">STARTUP UNICORNS</span>
+            <span className="block whitespace-nowrap">OF TOMORROW.</span>
           </span>
         </motion.h1>
 
+        {/* Texto acima da Waitlist */}
+        <motion.div
+          className="absolute bottom-40 sm:bottom-44 md:bottom-48 lg:bottom-52 xl:bottom-56 left-4 sm:left-6 md:left-12 lg:left-16 xl:left-20 2xl:left-24"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.1 }}
+        >
+          <p className="text-white font-bold text-base sm:text-lg md:text-xl lg:text-2xl leading-tight">
+            <span className="block">DEVOPS/MLOPS</span>
+            <span className="block">OPEN SOURCE</span>
+            <span className="block">PLATFORM COMING SOON</span>
+          </p>
+        </motion.div>
+
         {/* Waitlist Form - Canto Inferior Esquerdo */}
         <motion.div
-          className="absolute bottom-16 sm:bottom-20 md:bottom-24 lg:bottom-28 xl:bottom-32 left-4 sm:left-6 md:left-12 lg:left-16 xl:left-20 2xl:left-24 w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-sm xl:max-w-md"
+          className="absolute bottom-8 sm:bottom-10 md:bottom-12 lg:bottom-16 xl:bottom-20 left-4 sm:left-6 md:left-12 lg:left-16 xl:left-20 2xl:left-24 w-[90%] max-w-xs sm:max-w-sm md:max-w-md lg:max-w-xs xl:max-w-sm"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.3 }}
@@ -148,6 +166,24 @@ export default function Home() {
               </motion.div>
             )}
           </motion.div>
+
+        {/* Link para lunchSTEM - Abaixo da Waitlist */}
+        <motion.div
+          className="absolute -bottom-4 sm:-bottom-2 md:bottom-0 lg:bottom-1 xl:bottom-2 left-4 sm:left-6 md:left-12 lg:left-16 xl:left-20 2xl:left-24 w-[90%] max-w-xs sm:max-w-sm md:max-w-md lg:max-w-xs xl:max-w-sm"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.5 }}
+        >
+          <a
+            href="https://github.com/Freelunch-AI/lunch-stem"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block bg-[#1E6091] hover:bg-[#1a5178] text-white px-3 py-3 rounded-lg transition-all duration-300 text-xs sm:text-sm font-medium text-center leading-tight"
+          >
+            <span className="block">CREATORS OF LUNCHSTEM: THE BEST</span>
+            <span className="block">STEM KNOWLEDGE BASE IN THE WORLD</span>
+          </a>
+        </motion.div>
 
       {/* Footer */}
       <motion.footer
