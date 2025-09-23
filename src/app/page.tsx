@@ -1041,7 +1041,7 @@ export default function Home() {
           <div className="flex flex-col gap-4 w-full text-center">
             <h3 className="text-2xl font-bold" style={{color: 'var(--dark-brown)'}}>Get in Touch</h3>
             <div className="bg-gray-50 rounded-xl p-4 border-2 shadow-lg" style={{borderColor: 'var(--green)'}}>
-              <p className="text-sm font-medium mb-2" style={{color: 'var(--brown)'}}>Email me directly:</p>
+              <p className="text-sm font-medium mb-2" style={{color: 'var(--brown)'}}>Email us for more info:</p>
               <a 
                 href="mailto:freelunch@freelunch.dev" 
                 className="text-xl font-bold hover:underline transition-colors"
