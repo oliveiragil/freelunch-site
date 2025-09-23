@@ -68,22 +68,24 @@ body {
   display: inline-block;
 }
 
-.line-numbers {
+/* Line numbers específico para flexbox */
+.code-editor .flex .line-numbers {
   color: #666;
-  background: #2a2a2a;
-  padding: 1.5rem 1rem;
+  text-align: right;
+  padding-right: 1rem;
+  margin-right: 0.5rem;
   border-right: 1px solid #444;
   user-select: none;
-  font-size: 0.9rem;
-  min-width: 3rem;
-  text-align: right;
+  white-space: pre;
+  flex-shrink: 0;
+  min-width: 2rem;
 }
 
-.code-content {
+/* Código principal */
+.code-editor .flex > div:last-child {
   color: #e6e6e6;
-  padding: 1.5rem;
   flex: 1;
-  overflow-x: auto;
+  white-space: pre-wrap;
 }
 
 /* Token Styling */
@@ -272,73 +274,83 @@ body {
     0 2px 4px rgba(0,0,0,0.4);
 }
 
-/* Terminal Styles */
+/* Terminal Typing Animation */
 .terminal-container {
-  font-family: var(--font-jetbrains-mono), monospace;
-  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-  border: 2px solid var(--green);
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-  position: relative;
-  overflow: hidden;
-}
-
-.terminal-container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    radial-gradient(circle at 20% 50%, rgba(78, 107, 76, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 50%, rgba(75, 58, 39, 0.1) 0%, transparent 50%);
-  pointer-events: none;
+  font-family: "Fira Code", monospace;
 }
 
 .terminal-content {
-  position: relative;
-  z-index: 1;
+  color: var(--green);
+  font-size: clamp(18px, 4vw, 72px);
+  line-height: 1.2;
+  font-weight: 600;
 }
 
-.typing-line {
-  display: flex;
-  align-items: center;
-  font-size: 1.1rem;
-  line-height: 1.6;
+/* Responsive terminal text sizing */
+@media (max-width: 640px) {
+  .terminal-content {
+    font-size: clamp(16px, 5vw, 28px);
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  .terminal-content {
+    font-size: clamp(24px, 4.5vw, 36px);
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .terminal-content {
+    font-size: clamp(32px, 4vw, 48px);
+  }
 }
 
 .terminal-prompt {
   color: var(--green);
-  margin-right: 0.75rem;
-  font-weight: 600;
-  text-shadow: 0 0 10px rgba(78, 107, 76, 0.5);
+  margin-right: 8px;
+}
+
+.terminal-text {
+  color: var(--brown);
+  display: inline;
+  font-weight: 800;
+  min-height: 1.2em;
 }
 
 .terminal-text-container {
+  display: inline;
   position: relative;
-  flex: 1;
 }
 
 .terminal-text-hidden {
   visibility: hidden;
   position: absolute;
-  white-space: nowrap;
-}
-
-.terminal-text {
-  color: #e0e0e0;
-  white-space: nowrap;
-  position: relative;
+  top: 0;
+  left: 0;
+  color: transparent;
+  pointer-events: none;
 }
 
 .cursor {
-  color: var(--green);
-  font-weight: bold;
-  margin-left: 2px;
+  display: inline-block;
+  background-color: var(--green);
+  color: #1a1a1a;
   animation: blink 1s infinite;
-  text-shadow: 0 0 8px rgba(78, 107, 76, 0.8);
+  width: 12px;
+  text-align: center;
+}
+
+/* Responsive cursor sizing */
+@media (max-width: 640px) {
+  .cursor {
+    width: 8px;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  .cursor {
+    width: 10px;
+  }
 }
 
 @keyframes blink {
@@ -346,42 +358,24 @@ body {
   51%, 100% { opacity: 0; }
 }
 
-.unicorn-text {
-  font-weight: 500;
-  letter-spacing: 0.5px;
+.typing-line {
+  margin-bottom: 8px;
 }
+
+/* Unicorn Colors Hover Effect */
+.unicorn-text {
+  position: relative;
+  display: inline;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.unicorn-text:hover .unicorn-word-1 { color: #ff6b6b !important; } /* Pink for "2-person" */
+.unicorn-text:hover .unicorn-word-2 { color: #4ecdc4 !important; } /* Teal for "Startup" */
+.unicorn-text:hover .unicorn-word-3 { color: #feca57 !important; } /* Yellow for "Unicorns" */
 
 .unicorn-word {
-  position: relative;
-  display: inline-block;
-  background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57);
-  background-size: 300% 300%;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: unicornGradient 3s ease-in-out infinite;
-  text-shadow: none;
-}
-
-.unicorn-word-1 {
-  animation-delay: 0s;
-}
-
-.unicorn-word-2 {
-  animation-delay: 0.5s;
-}
-
-.unicorn-word-3 {
-  animation-delay: 1s;
-}
-
-@keyframes unicornGradient {
-  0%, 100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
+  transition: color 0.3s ease;
 }
 
 /* Tagline Shimmer */

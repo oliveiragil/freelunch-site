@@ -53,7 +53,7 @@ function TerminalTyping() {
   };
 
   return (
-    <div className="terminal-container mb-10">
+    <div className="terminal-container mb-6 sm:mb-8 lg:mb-10">
       <div className="terminal-content">
         <div className="typing-line">
           <span className="terminal-prompt">~$</span>
@@ -318,9 +318,9 @@ export default function Home() {
                 <span className="dot" style={{background:'#ffbd2e'}}></span>
                 <span className="dot" style={{background:'#27c93f'}}></span>
               </div>
-              <div className="flex p-6">
-                <div className="line-numbers text-2xl leading-10">1<br/>2<br/>3<br/>4</div>
-                <div className="text-2xl leading-10">
+              <div className="flex p-3 sm:p-4 lg:p-6">
+                <div className="line-numbers text-sm sm:text-lg lg:text-2xl leading-6 sm:leading-8 lg:leading-10">1<br/>2<br/>3<br/>4</div>
+                <div className="text-sm sm:text-lg lg:text-2xl leading-6 sm:leading-8 lg:leading-10">
                   <span className="token-key">from</span> <span className="token-str">freelunch</span> <span className="token-key">import</span> <span className="token-fn">open_source</span><br/>
                   <br/>
                   <span className="token-var">lunchbox</span><span className="token-op"> = </span>
