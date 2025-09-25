@@ -403,9 +403,9 @@ body {
     rgba(255, 255, 255, 0.4),
     transparent
   );
-  animation: shimmer-move 3s ease-in-out infinite;
   z-index: 2;
   pointer-events: none;
+  transition: left 0.8s ease;
 }
 
 .tagline-shimmer::before {
@@ -419,6 +419,10 @@ body {
   transition: left 0.8s ease;
   z-index: 2;
   pointer-events: none;
+}
+
+.tagline-shimmer:hover::after {
+  left: 100%;
 }
 
 .tagline-shimmer:hover::before {
@@ -439,17 +443,7 @@ body {
   }
 }
 
-@keyframes shimmer-move {
-  0% {
-    left: -100%;
-  }
-  50% {
-    left: 100%;
-  }
-  100% {
-    left: -100%;
-  }
-}
+
 
 /* Input Pro */
 .input-pro {
