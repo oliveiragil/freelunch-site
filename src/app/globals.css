@@ -380,17 +380,58 @@ body {
 
 /* Tagline Shimmer */
 .tagline-shimmer {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.tagline-shimmer span {
+  position: relative;
+  z-index: 1;
+}
+
+.tagline-shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
   background: linear-gradient(
     90deg,
-    var(--dark-brown) 25%,
-    var(--green) 50%,
-    var(--dark-brown) 75%
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
   );
-  background-size: 200% 100%;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shimmer 3s ease-in-out infinite;
+  z-index: 2;
+  pointer-events: none;
+  transition: left 0.8s ease;
+}
+
+.tagline-shimmer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(78,107,76,0.3), transparent);
+  transition: left 0.8s ease;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.tagline-shimmer:hover::after {
+  left: 100%;
+}
+
+.tagline-shimmer:hover::before {
+  left: 100%;
+}
+
+.tagline-shimmer:hover {
+  transform: translateY(-2px);
+  text-shadow: 0 4px 8px rgba(78,107,76,0.3);
 }
 
 @keyframes shimmer {
@@ -401,6 +442,8 @@ body {
     background-position: 200% 0;
   }
 }
+
+
 
 /* Input Pro */
 .input-pro {

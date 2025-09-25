@@ -303,8 +303,7 @@ export default function Home() {
           <TerminalTyping />
           
           <p className="tagline-shimmer text-2xl md:text-3xl lg:text-4xl font-medium leading-relaxed tracking-wide cursor-pointer">
-            <span style={{color: 'var(--green)'}}>Coming soon:</span>{' '}
-            <span style={{color: 'var(--dark-brown)'}}>the first all-in-one, AI-assisted, open source Dev/Data/ML/LLMOps platform for backend engineers.</span>
+            <span style={{color: 'var(--green)'}}>Coming soon:</span> <span style={{color: 'var(--dark-brown)'}}>the first all-in-one, AI-assisted, open source Dev/Data/ML/LLMOps platform for backend engineers.</span>
           </p>
         </section>
 
